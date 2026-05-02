@@ -1,0 +1,238 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-04-30",
+  "source": "ClinicalGuard AI - Based on Lexicomp, UpToDate, and FDA prescribing information",
+  "medications": [
+    {
+      "name": "metformin",
+      "genericName": "metformin",
+      "normalDose": "500-1000mg BID",
+      "renalAdjustments": [
+        { "egfrMin": 45, "egfrMax": 999, "dose": "No adjustment needed. Standard dosing 500-1000mg BID.", "notes": "Monitor renal function annually." },
+        { "egfrMin": 30, "egfrMax": 44, "dose": "Reduce to 500mg BID maximum. Do not initiate new therapy.", "notes": "Monitor renal function every 3 months. Increased lactic acidosis risk." },
+        { "egfrMin": 0, "egfrMax": 29, "dose": "CONTRAINDICATED. Discontinue immediately.", "notes": "High risk of metformin-associated lactic acidosis (MALA). Switch to alternative agent." }
+      ]
+    },
+    {
+      "name": "lisinopril",
+      "genericName": "lisinopril",
+      "normalDose": "10-40mg daily",
+      "renalAdjustments": [
+        { "egfrMin": 30, "egfrMax": 999, "dose": "No adjustment needed. Start at 5-10mg daily.", "notes": "Monitor potassium and creatinine within 1-2 weeks of initiation." },
+        { "egfrMin": 10, "egfrMax": 29, "dose": "Start at 2.5-5mg daily. Titrate cautiously.", "notes": "High risk of hyperkalemia. Monitor K+ and Cr frequently." },
+        { "egfrMin": 0, "egfrMax": 9, "dose": "Use with extreme caution. 2.5mg daily if used.", "notes": "Consider alternative antihypertensive. Risk of acute kidney injury." }
+      ]
+    },
+    {
+      "name": "warfarin",
+      "genericName": "warfarin",
+      "normalDose": "Individualized based on INR (typically 2-10mg daily)",
+      "renalAdjustments": [
+        { "egfrMin": 0, "egfrMax": 999, "dose": "No specific renal dose adjustment required.", "notes": "However, CKD patients have increased bleeding risk. Use lower initial doses. Monitor INR more frequently (weekly initially). Consider DOAC alternatives which may have better safety profile in CKD." }
+      ]
+    },
+    {
+      "name": "enoxaparin",
+      "genericName": "enoxaparin",
+      "normalDose": "1mg/kg BID (treatment) or 40mg daily (prophylaxis)",
+      "renalAdjustments": [
+        { "egfrMin": 30, "egfrMax": 999, "dose": "Standard dosing.", "notes": "Monitor anti-Xa levels if concerned about accumulation." },
+        { "egfrMin": 0, "egfrMax": 29, "dose": "Reduce to 1mg/kg ONCE daily (treatment) or 30mg daily (prophylaxis).", "notes": "Significant accumulation risk. Monitor anti-Xa levels. Consider unfractionated heparin as alternative." }
+      ]
+    },
+    {
+      "name": "gabapentin",
+      "genericName": "gabapentin",
+      "normalDose": "300-1200mg TID",
+      "renalAdjustments": [
+        { "egfrMin": 60, "egfrMax": 999, "dose": "No adjustment. Standard dosing.", "notes": "" },
+        { "egfrMin": 30, "egfrMax": 59, "dose": "200-700mg BID", "notes": "Reduce dose and frequency." },
+        { "egfrMin": 15, "egfrMax": 29, "dose": "200-700mg once daily", "notes": "Further reduction needed." },
+        { "egfrMin": 0, "egfrMax": 14, "dose": "100-300mg once daily", "notes": "Supplemental dose after hemodialysis." }
+      ]
+    },
+    {
+      "name": "ciprofloxacin",
+      "genericName": "ciprofloxacin",
+      "normalDose": "250-750mg BID",
+      "renalAdjustments": [
+        { "egfrMin": 30, "egfrMax": 999, "dose": "No adjustment needed.", "notes": "" },
+        { "egfrMin": 5, "egfrMax": 29, "dose": "Reduce dose by 50%. 250-500mg BID → 250mg BID max.", "notes": "Extended interval may also be used." },
+        { "egfrMin": 0, "egfrMax": 4, "dose": "250mg every 18-24 hours.", "notes": "Consider alternative antibiotic if possible." }
+      ]
+    },
+    {
+      "name": "vancomycin",
+      "genericName": "vancomycin",
+      "normalDose": "15-20mg/kg every 8-12 hours",
+      "renalAdjustments": [
+        { "egfrMin": 50, "egfrMax": 999, "dose": "Standard dosing with trough monitoring.", "notes": "Target trough AUC/MIC 400-600." },
+        { "egfrMin": 20, "egfrMax": 49, "dose": "15mg/kg every 24-48 hours.", "notes": "Monitor trough levels closely. Adjust based on levels." },
+        { "egfrMin": 0, "egfrMax": 19, "dose": "15mg/kg loading dose, then redose based on levels.", "notes": "May need dosing every 48-96 hours. Trough monitoring essential." }
+      ]
+    },
+    {
+      "name": "apixaban",
+      "genericName": "apixaban",
+      "normalDose": "5mg BID (AF) or 10mg BID then 5mg BID (VTE)",
+      "renalAdjustments": [
+        { "egfrMin": 25, "egfrMax": 999, "dose": "Standard dosing. Reduce to 2.5mg BID if ≥2 of: age ≥80, weight ≤60kg, Cr ≥1.5.", "notes": "Preferred DOAC in renal impairment due to low renal clearance (27%)." },
+        { "egfrMin": 15, "egfrMax": 24, "dose": "2.5mg BID. Use with caution.", "notes": "Limited data. Monitor for bleeding." },
+        { "egfrMin": 0, "egfrMax": 14, "dose": "Not recommended. Insufficient data.", "notes": "Consider warfarin with close INR monitoring or unfractionated heparin." }
+      ]
+    },
+    {
+      "name": "dabigatran",
+      "genericName": "dabigatran",
+      "normalDose": "150mg BID",
+      "renalAdjustments": [
+        { "egfrMin": 50, "egfrMax": 999, "dose": "Standard 150mg BID.", "notes": "Reduce to 110mg BID if age >80 or high bleeding risk." },
+        { "egfrMin": 30, "egfrMax": 49, "dose": "110mg BID (or 75mg BID per FDA).", "notes": "Monitor renal function every 3-6 months." },
+        { "egfrMin": 0, "egfrMax": 29, "dose": "CONTRAINDICATED.", "notes": "80% renal clearance. High accumulation and bleeding risk. Use alternative anticoagulant." }
+      ]
+    },
+    {
+      "name": "allopurinol",
+      "genericName": "allopurinol",
+      "normalDose": "100-800mg daily",
+      "renalAdjustments": [
+        { "egfrMin": 60, "egfrMax": 999, "dose": "Standard dosing. Start 100mg, titrate to target uric acid.", "notes": "" },
+        { "egfrMin": 30, "egfrMax": 59, "dose": "Start 50-100mg daily. Max 200mg daily.", "notes": "Increased risk of hypersensitivity reaction." },
+        { "egfrMin": 10, "egfrMax": 29, "dose": "Start 50mg daily. Max 100mg daily.", "notes": "Monitor for rash and hypersensitivity." },
+        { "egfrMin": 0, "egfrMax": 9, "dose": "50mg every other day. Max 100mg every other day.", "notes": "Consider febuxostat as alternative (hepatic metabolism)." }
+      ]
+    },
+    {
+      "name": "levofloxacin",
+      "genericName": "levofloxacin",
+      "normalDose": "500-750mg daily",
+      "renalAdjustments": [
+        { "egfrMin": 50, "egfrMax": 999, "dose": "No adjustment needed.", "notes": "" },
+        { "egfrMin": 20, "egfrMax": 49, "dose": "500mg initial, then 250mg daily. Or 750mg initial, then 500mg daily.", "notes": "Extend interval." },
+        { "egfrMin": 0, "egfrMax": 19, "dose": "500mg initial, then 250mg every 48 hours.", "notes": "Significant accumulation risk." }
+      ]
+    },
+    {
+      "name": "amoxicillin",
+      "genericName": "amoxicillin",
+      "normalDose": "250-500mg TID or 875mg BID",
+      "renalAdjustments": [
+        { "egfrMin": 30, "egfrMax": 999, "dose": "No adjustment needed.", "notes": "" },
+        { "egfrMin": 10, "egfrMax": 29, "dose": "250-500mg BID (reduce frequency).", "notes": "Monitor for neurotoxicity at high doses." },
+        { "egfrMin": 0, "egfrMax": 9, "dose": "250-500mg daily.", "notes": "Supplemental dose after hemodialysis." }
+      ]
+    },
+    {
+      "name": "morphine",
+      "genericName": "morphine",
+      "normalDose": "Varies (2-15mg IV/PO every 4 hours)",
+      "renalAdjustments": [
+        { "egfrMin": 50, "egfrMax": 999, "dose": "Standard dosing with monitoring.", "notes": "Active metabolite M6G accumulates even with mild CKD." },
+        { "egfrMin": 30, "egfrMax": 49, "dose": "Reduce dose by 50%. Extend interval to every 6-8 hours.", "notes": "M6G accumulation causes prolonged sedation." },
+        { "egfrMin": 0, "egfrMax": 29, "dose": "AVOID. Use hydromorphone or fentanyl instead.", "notes": "Dangerous M6G accumulation. Respiratory depression risk." }
+      ]
+    },
+    {
+      "name": "hydromorphone",
+      "genericName": "hydromorphone",
+      "normalDose": "2-4mg PO every 4-6 hours",
+      "renalAdjustments": [
+        { "egfrMin": 50, "egfrMax": 999, "dose": "Standard dosing.", "notes": "Preferred opioid in moderate CKD." },
+        { "egfrMin": 30, "egfrMax": 49, "dose": "Reduce dose by 50%. Start 1mg PO every 6 hours.", "notes": "Metabolite accumulation possible." },
+        { "egfrMin": 0, "egfrMax": 29, "dose": "Reduce dose by 75%. Start 0.5mg PO every 8 hours.", "notes": "Use with extreme caution. Monitor sedation closely." }
+      ]
+    },
+    {
+      "name": "rivaroxaban",
+      "genericName": "rivaroxaban",
+      "normalDose": "20mg daily with food (AF) or 15mg BID then 20mg daily (VTE)",
+      "renalAdjustments": [
+        { "egfrMin": 50, "egfrMax": 999, "dose": "Standard dosing.", "notes": "" },
+        { "egfrMin": 30, "egfrMax": 49, "dose": "15mg daily with food (for AF).", "notes": "Monitor renal function every 3-6 months." },
+        { "egfrMin": 15, "egfrMax": 29, "dose": "15mg daily with food. Use with caution.", "notes": "Limited data. Monitor for bleeding." },
+        { "egfrMin": 0, "egfrMax": 14, "dose": "AVOID. Insufficient data.", "notes": "Consider warfarin or apixaban." }
+      ]
+    },
+    {
+      "name": "methotrexate",
+      "genericName": "methotrexate",
+      "normalDose": "7.5-25mg weekly (rheumatologic)",
+      "renalAdjustments": [
+        { "egfrMin": 60, "egfrMax": 999, "dose": "Standard dosing. Monitor CBC and LFTs.", "notes": "" },
+        { "egfrMin": 30, "egfrMax": 59, "dose": "Reduce dose by 50%. Monitor CBC weekly.", "notes": "Increased toxicity risk." },
+        { "egfrMin": 0, "egfrMax": 29, "dose": "CONTRAINDICATED.", "notes": "Severe pancytopenia risk. Use alternative (leflunomide, biologics)." }
+      ]
+    },
+    {
+      "name": "digoxin",
+      "genericName": "digoxin",
+      "normalDose": "0.125-0.25mg daily",
+      "renalAdjustments": [
+        { "egfrMin": 60, "egfrMax": 999, "dose": "0.125-0.25mg daily. Target level 0.5-0.9 ng/mL.", "notes": "" },
+        { "egfrMin": 30, "egfrMax": 59, "dose": "0.125mg daily or every other day.", "notes": "Monitor levels. Target 0.5-0.9 ng/mL." },
+        { "egfrMin": 10, "egfrMax": 29, "dose": "0.0625-0.125mg daily. Guided by levels.", "notes": "High toxicity risk. Monitor levels and K+ closely." },
+        { "egfrMin": 0, "egfrMax": 9, "dose": "0.0625mg every other day. Guided by levels.", "notes": "Consider alternative rate control (beta-blocker)." }
+      ]
+    },
+    {
+      "name": "spironolactone",
+      "genericName": "spironolactone",
+      "normalDose": "25-50mg daily",
+      "renalAdjustments": [
+        { "egfrMin": 50, "egfrMax": 999, "dose": "Standard dosing. Monitor K+ within 1 week.", "notes": "" },
+        { "egfrMin": 30, "egfrMax": 49, "dose": "Start 12.5mg daily. Max 25mg. Monitor K+ within 3 days.", "notes": "High hyperkalemia risk, especially with ACEi/ARB." },
+        { "egfrMin": 0, "egfrMax": 29, "dose": "AVOID. Extreme hyperkalemia risk.", "notes": "Use loop diuretic instead if volume overload." }
+      ]
+    },
+    {
+      "name": "ranitidine",
+      "genericName": "ranitidine",
+      "normalDose": "150mg BID or 300mg at bedtime",
+      "renalAdjustments": [
+        { "egfrMin": 50, "egfrMax": 999, "dose": "No adjustment needed.", "notes": "" },
+        { "egfrMin": 0, "egfrMax": 49, "dose": "150mg daily (reduce frequency by 50%).", "notes": "Renally cleared. Accumulation causes confusion in elderly." }
+      ]
+    },
+    {
+      "name": "pregabalin",
+      "genericName": "pregabalin",
+      "normalDose": "75-300mg BID",
+      "renalAdjustments": [
+        { "egfrMin": 60, "egfrMax": 999, "dose": "Standard dosing.", "notes": "" },
+        { "egfrMin": 30, "egfrMax": 59, "dose": "75-150mg BID (50% reduction).", "notes": "" },
+        { "egfrMin": 15, "egfrMax": 29, "dose": "25-75mg BID or 75mg daily.", "notes": "Significant dose reduction needed." },
+        { "egfrMin": 0, "egfrMax": 14, "dose": "25-75mg once daily.", "notes": "Supplemental dose after hemodialysis." }
+      ]
+    },
+    {
+      "name": "acyclovir",
+      "genericName": "acyclovir",
+      "normalDose": "200-800mg 5x/day (oral) or 5-10mg/kg IV every 8 hours",
+      "renalAdjustments": [
+        { "egfrMin": 50, "egfrMax": 999, "dose": "Standard dosing.", "notes": "Ensure adequate hydration." },
+        { "egfrMin": 25, "egfrMax": 49, "dose": "Standard dose, extend interval to every 12 hours (IV).", "notes": "Hydrate aggressively." },
+        { "egfrMin": 10, "egfrMax": 24, "dose": "50% dose every 12 hours (IV) or standard oral dose every 12 hours.", "notes": "Monitor for neurotoxicity." },
+        { "egfrMin": 0, "egfrMax": 9, "dose": "50% dose every 24 hours (IV).", "notes": "High neurotoxicity risk. Consider valacyclovir dose adjustment." }
+      ]
+    },
+    {
+      "name": "colchicine",
+      "genericName": "colchicine",
+      "normalDose": "0.6mg BID (gout prophylaxis) or 1.2mg then 0.6mg (acute flare)",
+      "renalAdjustments": [
+        { "egfrMin": 30, "egfrMax": 999, "dose": "Standard dosing for acute flare. Reduce prophylaxis to 0.3mg daily if eGFR 30-50.", "notes": "" },
+        { "egfrMin": 10, "egfrMax": 29, "dose": "0.3mg every other day for prophylaxis. Acute: 0.6mg single dose, do not repeat within 14 days.", "notes": "Accumulation risk. Monitor for myopathy." },
+        { "egfrMin": 0, "egfrMax": 9, "dose": "AVOID if on dialysis with hepatic impairment. Otherwise 0.3mg single dose with extreme caution.", "notes": "Fatal toxicity reported." }
+      ]
+    },
+    {
+      "name": "rosuvastatin",
+      "genericName": "rosuvastatin",
+      "normalDose": "5-40mg daily",
+      "renalAdjustments": [
+        { "egfrMin": 30, "egfrMax": 999, "dose": "Standard dosing. Start 5-10mg.", "notes": "" },
+        { "egfrMin": 0, "egfrMax": 29, "dose": "Start 5mg daily. Max 10mg daily.", "notes": "40mg dose contraindicated in severe CKD." }
+      ]
+    }
+  ]
+}

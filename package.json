@@ -1,0 +1,49 @@
+{
+  "name": "clinicalguard-mcp-server",
+  "version": "1.0.0",
+  "description": "ClinicalGuard AI - Intelligent Clinical Safety System. MCP Server with advanced clinical decision support tools for the Agents Assemble Healthcare AI Hackathon.",
+  "main": "index.ts",
+  "scripts": {
+    "start": "npx tsx index.ts",
+    "dev": "npx tsx watch index.ts",
+    "test": "npx vitest run",
+    "test:watch": "npx vitest",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "author": "ClinicalGuard AI Team",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "fhir",
+    "healthcare",
+    "clinical-decision-support",
+    "drug-interactions",
+    "prompt-opinion",
+    "sharp",
+    "a2a"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.2",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.5.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.50.1",
+    "vitest": "^3.2.1"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.1",
+    "@smile-cdr/fhirts": "^2.3.0",
+    "axios": "^1.9.0",
+    "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jose": "^6.0.11",
+    "zod": "^4.2.1"
+  }
+}

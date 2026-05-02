@@ -1,0 +1,617 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-04-30",
+  "source": "ClinicalGuard AI - Based on FDA, DrugBank, and clinical guidelines",
+  "interactions": [
+    {
+      "drug1": "warfarin",
+      "drug2": "aspirin",
+      "severity": "severe",
+      "mechanism": "Additive anticoagulant and antiplatelet effects",
+      "clinicalEffect": "Significantly increased risk of major bleeding, including GI and intracranial hemorrhage",
+      "recommendation": "Avoid combination unless specifically indicated (e.g., mechanical heart valve). If used together, monitor INR closely and consider PPI for GI protection.",
+      "alternatives": ["Use aspirin alone for low stroke risk", "Use warfarin alone with adequate INR control"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "warfarin",
+      "drug2": "ketorolac",
+      "severity": "contraindicated",
+      "mechanism": "NSAID inhibits platelet function and may increase warfarin levels via CYP2C9 inhibition",
+      "clinicalEffect": "Very high risk of serious GI bleeding. Ketorolac is one of the most potent NSAIDs for bleeding risk.",
+      "recommendation": "CONTRAINDICATED. Do not use ketorolac in patients on warfarin. Use acetaminophen (paracetamol) for pain management.",
+      "alternatives": ["acetaminophen", "tramadol (with caution)", "topical NSAIDs (lower systemic absorption)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "warfarin",
+      "drug2": "ibuprofen",
+      "severity": "severe",
+      "mechanism": "NSAID inhibits platelet aggregation and may displace warfarin from protein binding",
+      "clinicalEffect": "Increased risk of GI bleeding and elevated INR",
+      "recommendation": "Avoid if possible. If NSAID is necessary, use lowest dose for shortest duration. Monitor INR frequently. Add PPI for GI protection.",
+      "alternatives": ["acetaminophen", "topical diclofenac"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "warfarin",
+      "drug2": "amiodarone",
+      "severity": "severe",
+      "mechanism": "Amiodarone inhibits CYP2C9 and CYP3A4, reducing warfarin metabolism",
+      "clinicalEffect": "INR may increase 1.5-2x within 1-2 weeks. Effect persists for months after amiodarone discontinuation due to long half-life.",
+      "recommendation": "Reduce warfarin dose by 30-50% when starting amiodarone. Monitor INR weekly for first month, then biweekly.",
+      "alternatives": ["Consider DOAC instead of warfarin if appropriate"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "warfarin",
+      "drug2": "fluconazole",
+      "severity": "severe",
+      "mechanism": "Fluconazole is a potent CYP2C9 inhibitor, significantly reducing warfarin metabolism",
+      "clinicalEffect": "INR may increase dramatically (2-3x). Risk of serious bleeding.",
+      "recommendation": "If combination is necessary, reduce warfarin dose by 25-50%. Monitor INR every 2-3 days during fluconazole therapy.",
+      "alternatives": ["Consider alternative antifungal (terbinafine for dermatophytes)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "metformin",
+      "drug2": "contrast_dye",
+      "severity": "severe",
+      "mechanism": "Iodinated contrast can cause acute kidney injury, leading to metformin accumulation and lactic acidosis",
+      "clinicalEffect": "Risk of metformin-associated lactic acidosis (MALA), which has ~50% mortality",
+      "recommendation": "Hold metformin 48 hours before and after contrast administration. Check renal function before restarting.",
+      "alternatives": ["Temporarily use insulin if glycemic control needed during metformin hold"],
+      "evidenceLevel": "B"
+    },
+    {
+      "drug1": "metformin",
+      "drug2": "alcohol",
+      "severity": "moderate",
+      "mechanism": "Both metformin and alcohol inhibit gluconeogenesis and can cause lactic acidosis",
+      "clinicalEffect": "Increased risk of hypoglycemia and lactic acidosis",
+      "recommendation": "Limit alcohol intake. Avoid binge drinking. Monitor blood glucose more frequently.",
+      "alternatives": [],
+      "evidenceLevel": "B"
+    },
+    {
+      "drug1": "lisinopril",
+      "drug2": "potassium_supplements",
+      "severity": "severe",
+      "mechanism": "ACE inhibitors reduce aldosterone, decreasing potassium excretion. Additional potassium can cause dangerous hyperkalemia.",
+      "clinicalEffect": "Hyperkalemia (K+ >5.5 mEq/L) which can cause fatal cardiac arrhythmias",
+      "recommendation": "Avoid potassium supplements unless documented hypokalemia. Monitor serum potassium regularly.",
+      "alternatives": ["If potassium supplementation needed, use lowest dose and monitor K+ within 1 week"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "lisinopril",
+      "drug2": "spironolactone",
+      "severity": "severe",
+      "mechanism": "Both drugs increase serum potassium through different mechanisms",
+      "clinicalEffect": "High risk of hyperkalemia, especially in patients with renal impairment",
+      "recommendation": "If combination is necessary, start spironolactone at low dose (12.5-25mg). Monitor potassium within 3 days, then weekly for first month.",
+      "alternatives": ["eplerenone (lower hyperkalemia risk)", "loop diuretic instead"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "lisinopril",
+      "drug2": "ibuprofen",
+      "severity": "moderate",
+      "mechanism": "NSAIDs reduce prostaglandin-mediated renal blood flow, counteracting ACE inhibitor effects",
+      "clinicalEffect": "Reduced antihypertensive effect. Increased risk of acute kidney injury, especially in dehydrated patients.",
+      "recommendation": "Avoid chronic NSAID use. If needed, use lowest dose for shortest duration. Monitor blood pressure and renal function.",
+      "alternatives": ["acetaminophen for pain"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "amlodipine",
+      "drug2": "simvastatin",
+      "severity": "moderate",
+      "mechanism": "Amlodipine inhibits CYP3A4, increasing simvastatin levels",
+      "clinicalEffect": "Increased risk of myopathy and rhabdomyolysis",
+      "recommendation": "Limit simvastatin to 20mg/day when used with amlodipine. Consider switching to atorvastatin or rosuvastatin (not affected).",
+      "alternatives": ["atorvastatin", "rosuvastatin"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "clopidogrel",
+      "drug2": "omeprazole",
+      "severity": "moderate",
+      "mechanism": "Omeprazole inhibits CYP2C19, reducing conversion of clopidogrel to its active metabolite",
+      "clinicalEffect": "Reduced antiplatelet effect of clopidogrel. Potentially increased risk of cardiovascular events.",
+      "recommendation": "Use pantoprazole instead (minimal CYP2C19 interaction). Avoid omeprazole and esomeprazole.",
+      "alternatives": ["pantoprazole", "famotidine (H2 blocker)"],
+      "evidenceLevel": "B"
+    },
+    {
+      "drug1": "digoxin",
+      "drug2": "amiodarone",
+      "severity": "severe",
+      "mechanism": "Amiodarone increases digoxin levels by reducing renal and non-renal clearance",
+      "clinicalEffect": "Digoxin toxicity (nausea, visual changes, arrhythmias). Digoxin levels may double.",
+      "recommendation": "Reduce digoxin dose by 50% when starting amiodarone. Monitor digoxin levels within 1 week.",
+      "alternatives": [],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "ssri",
+      "drug2": "tramadol",
+      "severity": "severe",
+      "mechanism": "Both increase serotonin levels through different mechanisms",
+      "clinicalEffect": "Risk of serotonin syndrome (agitation, hyperthermia, tachycardia, clonus, hyperreflexia). Can be fatal.",
+      "recommendation": "Use with extreme caution. Monitor for serotonin syndrome symptoms. Consider alternative analgesics.",
+      "alternatives": ["acetaminophen", "low-dose morphine (with caution)"],
+      "evidenceLevel": "B"
+    },
+    {
+      "drug1": "ciprofloxacin",
+      "drug2": "theophylline",
+      "severity": "severe",
+      "mechanism": "Ciprofloxacin inhibits CYP1A2, significantly reducing theophylline metabolism",
+      "clinicalEffect": "Theophylline toxicity (seizures, arrhythmias, nausea). Levels may increase 2-3x.",
+      "recommendation": "Avoid combination. If necessary, reduce theophylline dose by 30-50% and monitor levels daily.",
+      "alternatives": ["levofloxacin (less CYP1A2 inhibition)", "azithromycin"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "insulin",
+      "drug2": "beta_blocker",
+      "severity": "moderate",
+      "mechanism": "Beta-blockers mask hypoglycemia symptoms (tachycardia, tremor) and may prolong hypoglycemic episodes",
+      "clinicalEffect": "Unrecognized hypoglycemia. Delayed recovery from low blood sugar.",
+      "recommendation": "Use cardioselective beta-blockers (metoprolol, bisoprolol) which have less effect. Educate patient on non-adrenergic hypoglycemia symptoms (sweating, hunger).",
+      "alternatives": ["metoprolol (cardioselective)", "bisoprolol (cardioselective)"],
+      "evidenceLevel": "B"
+    },
+    {
+      "drug1": "lithium",
+      "drug2": "ibuprofen",
+      "severity": "severe",
+      "mechanism": "NSAIDs reduce renal lithium clearance by 15-30%",
+      "clinicalEffect": "Lithium toxicity (tremor, confusion, seizures, renal failure). Can be fatal.",
+      "recommendation": "AVOID NSAIDs in patients on lithium. If NSAID is essential, monitor lithium levels within 5 days and reduce lithium dose.",
+      "alternatives": ["acetaminophen", "sulindac (least effect on lithium levels)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "lithium",
+      "drug2": "lisinopril",
+      "severity": "severe",
+      "mechanism": "ACE inhibitors reduce renal lithium clearance",
+      "clinicalEffect": "Lithium toxicity. Levels may increase 25-50%.",
+      "recommendation": "If combination necessary, reduce lithium dose and monitor levels weekly for first month. Consider ARB as alternative (less interaction).",
+      "alternatives": ["amlodipine (no lithium interaction)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "methotrexate",
+      "drug2": "trimethoprim",
+      "severity": "severe",
+      "mechanism": "Both are folate antagonists. Trimethoprim also reduces renal methotrexate clearance.",
+      "clinicalEffect": "Severe pancytopenia (bone marrow suppression). Can be fatal.",
+      "recommendation": "AVOID combination. Use alternative antibiotic (amoxicillin, cephalosporin). If unavoidable, monitor CBC daily.",
+      "alternatives": ["amoxicillin", "cephalexin", "nitrofurantoin (for UTI)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "methotrexate",
+      "drug2": "ibuprofen",
+      "severity": "severe",
+      "mechanism": "NSAIDs reduce renal methotrexate clearance and displace from protein binding",
+      "clinicalEffect": "Methotrexate toxicity (mucositis, pancytopenia, hepatotoxicity, renal failure)",
+      "recommendation": "AVOID NSAIDs with high-dose methotrexate. With low-dose (rheumatologic), use with caution and monitor CBC/LFTs.",
+      "alternatives": ["acetaminophen", "celecoxib (lower risk)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "potassium",
+      "drug2": "spironolactone",
+      "severity": "severe",
+      "mechanism": "Spironolactone is potassium-sparing. Additional potassium causes dangerous hyperkalemia.",
+      "clinicalEffect": "Life-threatening hyperkalemia with cardiac arrhythmias",
+      "recommendation": "AVOID potassium supplements with spironolactone unless documented hypokalemia. Monitor K+ within 3 days.",
+      "alternatives": [],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "sildenafil",
+      "drug2": "nitrates",
+      "severity": "contraindicated",
+      "mechanism": "Both cause vasodilation via nitric oxide/cGMP pathway. Synergistic hypotensive effect.",
+      "clinicalEffect": "Severe, potentially fatal hypotension. Cardiovascular collapse.",
+      "recommendation": "ABSOLUTELY CONTRAINDICATED. Do not administer nitrates within 24 hours of sildenafil (48 hours for tadalafil).",
+      "alternatives": ["For angina: use beta-blockers, calcium channel blockers. For ED: consider non-PDE5 options."],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "clarithromycin",
+      "drug2": "simvastatin",
+      "severity": "contraindicated",
+      "mechanism": "Clarithromycin is a potent CYP3A4 inhibitor, dramatically increasing statin levels",
+      "clinicalEffect": "Rhabdomyolysis (muscle breakdown), acute kidney injury. Can be fatal.",
+      "recommendation": "CONTRAINDICATED. Temporarily discontinue simvastatin during clarithromycin course. Or use azithromycin instead.",
+      "alternatives": ["azithromycin (no CYP3A4 inhibition)", "pravastatin (not CYP3A4 metabolized)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "carbamazepine",
+      "drug2": "oral_contraceptives",
+      "severity": "severe",
+      "mechanism": "Carbamazepine induces CYP3A4, increasing metabolism of estrogen/progestin",
+      "clinicalEffect": "Contraceptive failure. Unintended pregnancy.",
+      "recommendation": "Use non-oral contraception (IUD, depot injection) or increase estrogen dose to 50mcg. Inform patient of reduced efficacy.",
+      "alternatives": ["levetiracetam (no enzyme induction)", "lamotrigine (minimal induction)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "fluoxetine",
+      "drug2": "maoi",
+      "severity": "contraindicated",
+      "mechanism": "Combined serotonergic effect causes massive serotonin accumulation",
+      "clinicalEffect": "Serotonin syndrome (hyperthermia, rigidity, myoclonus, autonomic instability). FATAL if untreated.",
+      "recommendation": "ABSOLUTELY CONTRAINDICATED. Wait 5 weeks after stopping fluoxetine before starting MAOI (due to long half-life of norfluoxetine). Wait 2 weeks after stopping MAOI before starting fluoxetine.",
+      "alternatives": ["bupropion (different mechanism)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "amiodarone",
+      "drug2": "liver_impairment",
+      "severity": "severe",
+      "mechanism": "Amiodarone is hepatotoxic and accumulates in liver tissue",
+      "clinicalEffect": "Hepatotoxicity (1-3% of patients). Can cause cirrhosis with chronic use.",
+      "recommendation": "Monitor LFTs every 3 months. If ALT >3x ULN, consider discontinuation. Avoid in pre-existing liver disease if possible.",
+      "alternatives": ["dronedarone (less hepatotoxic but less effective)", "sotalol"],
+      "evidenceLevel": "B"
+    },
+    {
+      "drug1": "nsaid",
+      "drug2": "heart_failure",
+      "severity": "severe",
+      "mechanism": "NSAIDs cause sodium and water retention, counteracting diuretics and worsening heart failure",
+      "clinicalEffect": "Heart failure exacerbation, fluid overload, hospitalization",
+      "recommendation": "AVOID all NSAIDs in heart failure patients. Use acetaminophen for pain. If NSAID absolutely needed, use lowest dose for shortest time and monitor weight/symptoms daily.",
+      "alternatives": ["acetaminophen", "topical analgesics", "duloxetine for chronic pain"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "metformin",
+      "drug2": "liver_impairment",
+      "severity": "severe",
+      "mechanism": "Impaired hepatic lactate clearance increases lactic acidosis risk",
+      "clinicalEffect": "Metformin-associated lactic acidosis. Higher mortality in liver disease.",
+      "recommendation": "AVOID in Child-Pugh B/C liver disease. Use with caution in Child-Pugh A. Monitor lactate levels.",
+      "alternatives": ["insulin", "linagliptin", "empagliflozin (with caution)"],
+      "evidenceLevel": "B"
+    },
+    {
+      "drug1": "spironolactone",
+      "drug2": "renal_impairment",
+      "severity": "severe",
+      "mechanism": "Reduced renal potassium excretion combined with potassium-sparing effect",
+      "clinicalEffect": "Severe hyperkalemia. Cardiac arrest risk.",
+      "recommendation": "Contraindicated if eGFR <30. If eGFR 30-50, start at 12.5mg and monitor K+ within 3 days. Avoid if K+ >5.0.",
+      "alternatives": ["loop diuretics (furosemide)", "eplerenone (slightly lower hyperkalemia risk)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "dabigatran",
+      "drug2": "renal_impairment",
+      "severity": "contraindicated",
+      "mechanism": "Dabigatran is 80% renally cleared. Accumulates rapidly in renal impairment.",
+      "clinicalEffect": "Major bleeding, including fatal intracranial hemorrhage",
+      "recommendation": "CONTRAINDICATED if CrCl <30 mL/min. Reduce dose to 75mg BID if CrCl 30-50. Monitor renal function every 3-6 months.",
+      "alternatives": ["apixaban (only 27% renal clearance - preferred in CKD)", "warfarin with INR monitoring"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "digoxin",
+      "drug2": "renal_impairment",
+      "severity": "severe",
+      "mechanism": "Digoxin is primarily renally cleared. Accumulates in renal impairment.",
+      "clinicalEffect": "Digoxin toxicity (nausea, visual disturbances, bradycardia, fatal arrhythmias)",
+      "recommendation": "Reduce dose based on CrCl. Target lower serum levels (0.5-0.9 ng/mL). Monitor levels and renal function regularly.",
+      "alternatives": ["beta-blockers for rate control", "amiodarone (with hepatic monitoring)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "allopurinol",
+      "drug2": "azathioprine",
+      "severity": "contraindicated",
+      "mechanism": "Allopurinol inhibits xanthine oxidase, blocking azathioprine metabolism. Levels increase 3-5x.",
+      "clinicalEffect": "Severe pancytopenia (bone marrow failure). Can be fatal.",
+      "recommendation": "CONTRAINDICATED unless dose of azathioprine is reduced by 75% AND close CBC monitoring. Consider febuxostat (does not interact).",
+      "alternatives": ["febuxostat (for gout)", "mycophenolate (alternative immunosuppressant)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "ketorolac",
+      "drug2": "renal_impairment",
+      "severity": "contraindicated",
+      "mechanism": "NSAIDs reduce renal prostaglandin synthesis, further compromising renal blood flow in impaired kidneys",
+      "clinicalEffect": "Acute kidney injury, fluid retention, hyperkalemia. Can precipitate dialysis-requiring renal failure.",
+      "recommendation": "CONTRAINDICATED in patients with CKD stage 3 or worse (eGFR <60). Use acetaminophen for pain.",
+      "alternatives": ["acetaminophen", "topical analgesics", "nerve blocks for acute pain"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "metformin",
+      "drug2": "renal_impairment",
+      "severity": "severe",
+      "mechanism": "Metformin is renally cleared. Accumulation in renal impairment increases lactic acidosis risk.",
+      "clinicalEffect": "Metformin-associated lactic acidosis (MALA). Risk increases significantly below eGFR 30.",
+      "recommendation": "eGFR 30-45: Reduce dose to 500mg BID max. Do not initiate new therapy. eGFR <30: CONTRAINDICATED. Discontinue immediately.",
+      "alternatives": ["insulin", "glipizide (hepatic metabolism)", "linagliptin (non-renal clearance)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "phenytoin",
+      "drug2": "warfarin",
+      "severity": "severe",
+      "mechanism": "Complex bidirectional interaction via CYP2C9. Phenytoin may initially increase then decrease warfarin effect.",
+      "clinicalEffect": "Unpredictable INR changes. Risk of both bleeding and clotting.",
+      "recommendation": "Monitor INR very closely (every 2-3 days) when starting, stopping, or changing phenytoin dose. Consider alternative anticonvulsant.",
+      "alternatives": ["levetiracetam (no CYP interaction)", "lamotrigine"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "erythromycin",
+      "drug2": "simvastatin",
+      "severity": "contraindicated",
+      "mechanism": "Erythromycin is a potent CYP3A4 inhibitor, dramatically increasing simvastatin levels",
+      "clinicalEffect": "Rhabdomyolysis (muscle breakdown), acute kidney injury. Can be fatal.",
+      "recommendation": "CONTRAINDICATED. Temporarily stop simvastatin during erythromycin course. Or use azithromycin.",
+      "alternatives": ["azithromycin", "pravastatin (not CYP3A4 metabolized)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "potassium",
+      "drug2": "renal_impairment",
+      "severity": "severe",
+      "mechanism": "Impaired renal potassium excretion leads to accumulation",
+      "clinicalEffect": "Life-threatening hyperkalemia with cardiac arrhythmias and arrest",
+      "recommendation": "Avoid potassium supplements in CKD stage 4-5 unless documented hypokalemia. Monitor K+ closely.",
+      "alternatives": [],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "morphine",
+      "drug2": "renal_impairment",
+      "severity": "severe",
+      "mechanism": "Active metabolite morphine-6-glucuronide accumulates in renal failure",
+      "clinicalEffect": "Prolonged sedation, respiratory depression, death",
+      "recommendation": "AVOID morphine in eGFR <30. Use hydromorphone or fentanyl (no active renal metabolites) with dose reduction.",
+      "alternatives": ["hydromorphone (reduced dose)", "fentanyl (reduced dose)", "acetaminophen"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "gentamicin",
+      "drug2": "vancomycin",
+      "severity": "severe",
+      "mechanism": "Additive nephrotoxicity and ototoxicity",
+      "clinicalEffect": "Acute kidney injury, permanent hearing loss",
+      "recommendation": "Avoid combination if possible. If necessary, monitor renal function daily and drug levels. Limit duration to <72 hours.",
+      "alternatives": ["Use alternative antibiotic combinations when possible"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "gentamicin",
+      "drug2": "renal_impairment",
+      "severity": "severe",
+      "mechanism": "Aminoglycosides are renally cleared and directly nephrotoxic",
+      "clinicalEffect": "Worsening renal failure, ototoxicity, vestibular damage",
+      "recommendation": "Extended-interval dosing (once daily) preferred. Monitor levels and renal function daily. Consider alternatives.",
+      "alternatives": ["ceftriaxone", "fluoroquinolones", "aztreonam"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "rivaroxaban",
+      "drug2": "ketoconazole",
+      "severity": "contraindicated",
+      "mechanism": "Ketoconazole inhibits both CYP3A4 and P-glycoprotein, dramatically increasing rivaroxaban levels",
+      "clinicalEffect": "Major bleeding risk. Rivaroxaban levels may increase 2.5x.",
+      "recommendation": "CONTRAINDICATED. Use alternative antifungal (fluconazole with caution, terbinafine).",
+      "alternatives": ["terbinafine (for dermatophytes)", "fluconazole (monitor closely)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "ssri",
+      "drug2": "warfarin",
+      "severity": "moderate",
+      "mechanism": "SSRIs inhibit platelet serotonin uptake, impairing platelet aggregation. Some SSRIs also inhibit CYP2C9.",
+      "clinicalEffect": "Increased bleeding risk, especially GI bleeding. INR may increase.",
+      "recommendation": "Monitor INR closely when starting/stopping SSRI. Consider PPI for GI protection. Sertraline has least CYP interaction.",
+      "alternatives": ["sertraline (least CYP interaction)", "mirtazapine (different mechanism)"],
+      "evidenceLevel": "B"
+    },
+    {
+      "drug1": "ssri",
+      "drug2": "nsaid",
+      "severity": "moderate",
+      "mechanism": "Both impair platelet function through different mechanisms (serotonin + COX inhibition)",
+      "clinicalEffect": "3-15x increased risk of GI bleeding compared to either drug alone",
+      "recommendation": "Avoid combination if possible. If necessary, add PPI for GI protection. Use acetaminophen instead of NSAID.",
+      "alternatives": ["acetaminophen for pain", "add PPI if NSAID essential"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "metronidazole",
+      "drug2": "alcohol",
+      "severity": "severe",
+      "mechanism": "Metronidazole inhibits aldehyde dehydrogenase (disulfiram-like reaction)",
+      "clinicalEffect": "Severe nausea, vomiting, flushing, tachycardia, hypotension within minutes of alcohol ingestion",
+      "recommendation": "ABSOLUTE alcohol avoidance during treatment and 48 hours after last dose. Warn patient explicitly.",
+      "alternatives": [],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "metronidazole",
+      "drug2": "warfarin",
+      "severity": "severe",
+      "mechanism": "Metronidazole inhibits CYP2C9, reducing warfarin metabolism",
+      "clinicalEffect": "INR may increase significantly. Bleeding risk.",
+      "recommendation": "Reduce warfarin dose by 25-50% during metronidazole course. Monitor INR every 2-3 days.",
+      "alternatives": ["Consider alternative antibiotic if possible"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "ciprofloxacin",
+      "drug2": "antacids",
+      "severity": "moderate",
+      "mechanism": "Divalent/trivalent cations (Al, Mg, Ca, Fe) chelate ciprofloxacin, preventing absorption",
+      "clinicalEffect": "Ciprofloxacin levels reduced by 50-90%. Treatment failure.",
+      "recommendation": "Take ciprofloxacin 2 hours before or 6 hours after antacids, calcium, iron, or dairy products.",
+      "alternatives": ["Separate administration times", "Use alternative antibiotic"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "levothyroxine",
+      "drug2": "calcium",
+      "severity": "moderate",
+      "mechanism": "Calcium binds levothyroxine in GI tract, reducing absorption by 20-25%",
+      "clinicalEffect": "Subtherapeutic thyroid hormone levels. Hypothyroidism symptoms.",
+      "recommendation": "Separate by at least 4 hours. Take levothyroxine on empty stomach, 30-60 min before breakfast.",
+      "alternatives": ["Separate administration by 4+ hours"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "levothyroxine",
+      "drug2": "iron",
+      "severity": "moderate",
+      "mechanism": "Iron chelates levothyroxine, reducing absorption",
+      "clinicalEffect": "Subtherapeutic thyroid levels. May need dose increase.",
+      "recommendation": "Separate by at least 4 hours. Monitor TSH 6-8 weeks after starting iron.",
+      "alternatives": ["Separate administration by 4+ hours"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "prednisone",
+      "drug2": "nsaid",
+      "severity": "severe",
+      "mechanism": "Both damage gastric mucosa through different mechanisms (corticosteroid + COX inhibition)",
+      "clinicalEffect": "4-15x increased risk of GI ulceration and bleeding",
+      "recommendation": "Avoid combination. If both needed, add PPI (omeprazole 20mg daily) for GI protection.",
+      "alternatives": ["acetaminophen instead of NSAID", "add PPI if combination unavoidable"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "prednisone",
+      "drug2": "diabetes",
+      "severity": "moderate",
+      "mechanism": "Corticosteroids increase hepatic gluconeogenesis and insulin resistance",
+      "clinicalEffect": "Hyperglycemia. May precipitate diabetic ketoacidosis in susceptible patients.",
+      "recommendation": "Monitor blood glucose QID when starting corticosteroids. Increase insulin/oral agents as needed. Expect glucose to rise 2-4 hours after dose.",
+      "alternatives": ["Use lowest effective steroid dose for shortest duration"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "ace_inhibitor",
+      "drug2": "arb",
+      "severity": "contraindicated",
+      "mechanism": "Dual RAAS blockade causes additive hyperkalemia and hypotension without additional benefit",
+      "clinicalEffect": "Hyperkalemia, acute kidney injury, hypotension. ONTARGET trial showed harm.",
+      "recommendation": "CONTRAINDICATED. Use one or the other, never both. If ACEi not tolerated (cough), switch to ARB.",
+      "alternatives": ["ACEi alone OR ARB alone (not both)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "verapamil",
+      "drug2": "beta_blocker",
+      "severity": "severe",
+      "mechanism": "Both depress AV node conduction and myocardial contractility",
+      "clinicalEffect": "Severe bradycardia, heart block, cardiac arrest. Especially dangerous IV.",
+      "recommendation": "AVOID combination, especially IV verapamil + IV beta-blocker. If oral combination needed, use with extreme caution and monitoring.",
+      "alternatives": ["diltiazem (slightly safer with beta-blockers but still caution)", "dihydropyridine CCB (amlodipine)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "digoxin",
+      "drug2": "verapamil",
+      "severity": "severe",
+      "mechanism": "Verapamil increases digoxin levels by 50-75% via P-glycoprotein inhibition",
+      "clinicalEffect": "Digoxin toxicity (bradycardia, heart block, visual changes, nausea)",
+      "recommendation": "Reduce digoxin dose by 50% when starting verapamil. Monitor digoxin levels within 1 week.",
+      "alternatives": ["amlodipine (no digoxin interaction)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "theophylline",
+      "drug2": "smoking_cessation",
+      "severity": "moderate",
+      "mechanism": "Smoking induces CYP1A2. Cessation removes induction, causing theophylline accumulation.",
+      "clinicalEffect": "Theophylline toxicity (seizures, arrhythmias) 1-2 weeks after quitting smoking.",
+      "recommendation": "Reduce theophylline dose by 25-33% when patient stops smoking. Monitor levels weekly for 4 weeks.",
+      "alternatives": [],
+      "evidenceLevel": "B"
+    },
+    {
+      "drug1": "nsaid",
+      "drug2": "lithium",
+      "severity": "severe",
+      "mechanism": "NSAIDs reduce renal lithium clearance by 15-30%",
+      "clinicalEffect": "Lithium toxicity (tremor, confusion, seizures, renal failure). Can be fatal.",
+      "recommendation": "AVOID NSAIDs in patients on lithium. Use acetaminophen. If NSAID essential, monitor lithium levels within 5 days.",
+      "alternatives": ["acetaminophen", "sulindac (least effect on lithium)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "nsaid",
+      "drug2": "renal_impairment",
+      "severity": "severe",
+      "mechanism": "NSAIDs reduce renal prostaglandin-mediated blood flow, worsening kidney function",
+      "clinicalEffect": "Acute kidney injury, fluid retention, hyperkalemia, hypertension worsening",
+      "recommendation": "AVOID all NSAIDs in CKD stage 3 or worse. Use acetaminophen for pain. If NSAID absolutely needed, use lowest dose for ≤3 days.",
+      "alternatives": ["acetaminophen", "topical diclofenac (minimal systemic absorption)", "duloxetine for chronic pain"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "trimethoprim",
+      "drug2": "renal_impairment",
+      "severity": "moderate",
+      "mechanism": "Trimethoprim blocks renal tubular creatinine secretion and can cause true hyperkalemia",
+      "clinicalEffect": "Apparent and real rise in creatinine. Hyperkalemia especially with ACEi/ARB.",
+      "recommendation": "Monitor K+ and creatinine within 3-5 days. Avoid in severe CKD with concurrent ACEi/ARB/spironolactone.",
+      "alternatives": ["nitrofurantoin (if eGFR >30)", "fosfomycin (for uncomplicated UTI)"],
+      "evidenceLevel": "B"
+    },
+    {
+      "drug1": "grapefruit",
+      "drug2": "simvastatin",
+      "severity": "moderate",
+      "mechanism": "Grapefruit inhibits intestinal CYP3A4, increasing simvastatin bioavailability",
+      "clinicalEffect": "Increased statin levels. Risk of myopathy and rhabdomyolysis.",
+      "recommendation": "Avoid grapefruit/grapefruit juice with simvastatin and lovastatin. Atorvastatin: limit to small amounts.",
+      "alternatives": ["rosuvastatin (not affected)", "pravastatin (not affected)"],
+      "evidenceLevel": "B"
+    },
+    {
+      "drug1": "warfarin",
+      "drug2": "vitamin_k",
+      "severity": "moderate",
+      "mechanism": "Vitamin K directly antagonizes warfarin's mechanism of action",
+      "clinicalEffect": "Reduced anticoagulant effect. Subtherapeutic INR. Increased clotting risk.",
+      "recommendation": "Maintain consistent vitamin K intake (not elimination). Avoid large fluctuations in green leafy vegetable consumption. Avoid vitamin K supplements.",
+      "alternatives": ["DOACs (not affected by vitamin K intake)"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "doxycycline",
+      "drug2": "antacids",
+      "severity": "moderate",
+      "mechanism": "Divalent cations chelate tetracyclines, preventing absorption",
+      "clinicalEffect": "Reduced doxycycline levels. Treatment failure.",
+      "recommendation": "Separate by 2-3 hours. Take doxycycline with water, not milk or antacids.",
+      "alternatives": ["Separate administration times"],
+      "evidenceLevel": "A"
+    },
+    {
+      "drug1": "clonidine",
+      "drug2": "beta_blocker",
+      "severity": "severe",
+      "mechanism": "Abrupt clonidine withdrawal with concurrent beta-blocker causes unopposed alpha stimulation",
+      "clinicalEffect": "Rebound hypertensive crisis. Can cause stroke, MI.",
+      "recommendation": "If discontinuing clonidine, taper over 1 week. Stop beta-blocker several days BEFORE stopping clonidine.",
+      "alternatives": ["Taper clonidine gradually before stopping"],
+      "evidenceLevel": "A"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "maria-garcia-001",
+        "name": [{ "given": ["María"], "family": "García" }],
+        "gender": "female",
+        "birthDate": "1954-03-15",
+        "identifier": [{ "system": "http://hospital.example/mrn", "value": "MRN-2024-001" }]
+      },
+      "request": { "method": "PUT", "url": "Patient/maria-garcia-001" }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-ckd",
+        "subject": { "reference": "Patient/maria-garcia-001" },
+        "code": { "coding": [{ "system": "http://snomed.info/sct", "code": "709044004", "display": "Chronic kidney disease stage 3B" }], "text": "Chronic kidney disease stage 3B" },
+        "clinicalStatus": { "coding": [{ "code": "active" }] },
+        "onsetDateTime": "2021-06-01"
+      },
+      "request": { "method": "PUT", "url": "Condition/cond-ckd" }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-afib",
+        "subject": { "reference": "Patient/maria-garcia-001" },
+        "code": { "coding": [{ "system": "http://snomed.info/sct", "code": "49436004", "display": "Atrial fibrillation" }], "text": "Atrial fibrillation" },
+        "clinicalStatus": { "coding": [{ "code": "active" }] },
+        "onsetDateTime": "2022-01-15"
+      },
+      "request": { "method": "PUT", "url": "Condition/cond-afib" }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-dm2",
+        "subject": { "reference": "Patient/maria-garcia-001" },
+        "code": { "coding": [{ "system": "http://snomed.info/sct", "code": "44054006", "display": "Diabetes mellitus type 2" }], "text": "Diabetes mellitus type 2" },
+        "clinicalStatus": { "coding": [{ "code": "active" }] },
+        "onsetDateTime": "2015-09-20"
+      },
+      "request": { "method": "PUT", "url": "Condition/cond-dm2" }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-htn",
+        "subject": { "reference": "Patient/maria-garcia-001" },
+        "code": { "coding": [{ "system": "http://snomed.info/sct", "code": "38341003", "display": "Hypertension" }], "text": "Hypertension" },
+        "clinicalStatus": { "coding": [{ "code": "active" }] },
+        "onsetDateTime": "2012-03-10"
+      },
+      "request": { "method": "PUT", "url": "Condition/cond-htn" }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "med-metformin",
+        "subject": { "reference": "Patient/maria-garcia-001" },
+        "status": "active",
+        "medicationCodeableConcept": { "coding": [{ "system": "http://www.nlm.nih.gov/research/umls/rxnorm", "code": "860975", "display": "Metformin 1000mg" }], "text": "Metformin 1000mg" },
+        "dosageInstruction": [{ "text": "1000mg twice daily with meals" }]
+      },
+      "request": { "method": "PUT", "url": "MedicationRequest/med-metformin" }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "med-lisinopril",
+        "subject": { "reference": "Patient/maria-garcia-001" },
+        "status": "active",
+        "medicationCodeableConcept": { "coding": [{ "system": "http://www.nlm.nih.gov/research/umls/rxnorm", "code": "314076", "display": "Lisinopril 20mg" }], "text": "Lisinopril 20mg" },
+        "dosageInstruction": [{ "text": "20mg once daily" }]
+      },
+      "request": { "method": "PUT", "url": "MedicationRequest/med-lisinopril" }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "med-amlodipine",
+        "subject": { "reference": "Patient/maria-garcia-001" },
+        "status": "active",
+        "medicationCodeableConcept": { "coding": [{ "system": "http://www.nlm.nih.gov/research/umls/rxnorm", "code": "329526", "display": "Amlodipine 5mg" }], "text": "Amlodipine 5mg" },
+        "dosageInstruction": [{ "text": "5mg once daily" }]
+      },
+      "request": { "method": "PUT", "url": "MedicationRequest/med-amlodipine" }
+    },
+    {
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "allergy-penicillin",
+        "patient": { "reference": "Patient/maria-garcia-001" },
+        "clinicalStatus": { "coding": [{ "code": "active" }] },
+        "code": { "coding": [{ "system": "http://www.nlm.nih.gov/research/umls/rxnorm", "code": "7980", "display": "Penicillin" }], "text": "Penicillin" },
+        "reaction": [{ "manifestation": [{ "text": "Anaphylaxis" }], "severity": "severe" }]
+      },
+      "request": { "method": "PUT", "url": "AllergyIntolerance/allergy-penicillin" }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-creatinine",
+        "subject": { "reference": "Patient/maria-garcia-001" },
+        "status": "final",
+        "category": [{ "coding": [{ "code": "laboratory" }] }],
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "2160-0", "display": "Creatinine [Mass/volume] in Serum or Plasma" }], "text": "Serum Creatinine" },
+        "valueQuantity": { "value": 1.6, "unit": "mg/dL" },
+        "effectiveDateTime": "2026-04-28T10:00:00Z"
+      },
+      "request": { "method": "PUT", "url": "Observation/obs-creatinine" }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-potassium",
+        "subject": { "reference": "Patient/maria-garcia-001" },
+        "status": "final",
+        "category": [{ "coding": [{ "code": "laboratory" }] }],
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "2823-3", "display": "Potassium [Moles/volume] in Serum or Plasma" }], "text": "Serum Potassium" },
+        "valueQuantity": { "value": 4.8, "unit": "mEq/L" },
+        "effectiveDateTime": "2026-04-28T10:00:00Z"
+      },
+      "request": { "method": "PUT", "url": "Observation/obs-potassium" }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-hba1c",
+        "subject": { "reference": "Patient/maria-garcia-001" },
+        "status": "final",
+        "category": [{ "coding": [{ "code": "laboratory" }] }],
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "4548-4", "display": "Hemoglobin A1c" }], "text": "HbA1c" },
+        "valueQuantity": { "value": 7.8, "unit": "%" },
+        "effectiveDateTime": "2026-04-20T10:00:00Z",
+        "interpretation": [{ "coding": [{ "code": "H" }] }]
+      },
+      "request": { "method": "PUT", "url": "Observation/obs-hba1c" }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-bp",
+        "subject": { "reference": "Patient/maria-garcia-001" },
+        "status": "final",
+        "category": [{ "coding": [{ "code": "vital-signs" }] }],
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "85354-9", "display": "Blood pressure panel" }], "text": "Blood Pressure" },
+        "component": [
+          { "code": { "text": "Systolic" }, "valueQuantity": { "value": 165, "unit": "mmHg" } },
+          { "code": { "text": "Diastolic" }, "valueQuantity": { "value": 92, "unit": "mmHg" } }
+        ],
+        "effectiveDateTime": "2026-04-30T08:00:00Z"
+      },
+      "request": { "method": "PUT", "url": "Observation/obs-bp" }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-hr",
+        "subject": { "reference": "Patient/maria-garcia-001" },
+        "status": "final",
+        "category": [{ "coding": [{ "code": "vital-signs" }] }],
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "8867-4", "display": "Heart rate" }], "text": "Heart Rate" },
+        "valueQuantity": { "value": 112, "unit": "bpm" },
+        "effectiveDateTime": "2026-04-30T08:00:00Z",
+        "interpretation": [{ "coding": [{ "code": "H" }] }]
+      },
+      "request": { "method": "PUT", "url": "Observation/obs-hr" }
+    }
+  ]
+}
